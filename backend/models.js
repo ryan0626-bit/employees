@@ -1,32 +1,19 @@
-import { v4 as uuid } from "uuid";
 import dynamoose from "dynamoose";
-
-const FoodSchema = new dynamoose.Schema({
-  email: {
+const EmployeeSchema = new dynamoose.Schema({
+  id: {
     hashKey: true,
     required: true,
     type: String,
   },
-  dateEntry: {
-    rangeKey: true,
+  name: {
     type: String,
     required: true,
   },
-  food: {
+  company: {
     type: String,
     required: true,
   },
-  mealType: { type: String, required: true },
+  position: { type: String, required: true },
 });
 
-const UserSchema = new dynamoose.Schema({
-  email: {
-    hashKey: true,
-    type: String,
-  },
-  password: String,
-});
-
-export const FoodModel = dynamoose.model("foodapp-food", FoodSchema);
-
-export const UserModel = dynamoose.model("foodapp-users", UserSchema);
+export const EmployeeModel = dynamoose.model("employee", EmployeeSchema);
